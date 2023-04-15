@@ -1,9 +1,21 @@
 pipeline {
     agent { label 'master' }
     stages {
-        stage('build') {
+        stage('checking python version') {
             steps {
-                echo "Hello World!"
+                bat 'python -v'
+            }
+        }
+        
+        stage('REPO Cloning'){
+            steps {
+                bat 'xcopy /S "*" "C:/xampp1/htdocs/Devops_jenkins" /Y'
+            }
+        }
+        
+        stage('Print done'){
+            steps{
+                echo "Done!'
             }
         }
     }
